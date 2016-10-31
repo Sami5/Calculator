@@ -1,0 +1,74 @@
+body {
+  background-color: black;
+  font-size: 120%;
+  font-weight: 400;
+  font-family: "Arial";
+}
+
+div #title {
+  margin: 6px 6px 10px 6px;
+  text-align: center;
+}
+
+.button#equal {
+  height: 90px;
+  float: right;
+}
+
+.button#zero {
+  width: 112px;
+}
+
+.button#AC, .button#CE {
+  background-color: maroon;
+} 
+
+.button {
+  width: 50px;
+  height: 40px;
+  padding: 5px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 10px;
+  display: inline;
+  margin: 4px;
+  border: none;
+  font-weight: 500;
+}
+
+button:focus {
+  outline: 0;
+}
+
+button:hover {
+  background-color: #474747;
+}
+
+button:active {
+  background-color: #848484;
+}
+
+div #result {
+  width: 226px;
+  height: 40px;
+  padding: 5px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 10px;
+  margin: 4px;
+}
+
+div #log {
+  color: #fff;
+  font-weight: 400;
+  font-size: 95%; 
+}
+
+.calculator {
+  width: 248px;
+  height: 355px;
+  padding: 10px;
+  background-color: #bfb9b9;
+  border-radius: 10px;
+  margin: auto;
+}
