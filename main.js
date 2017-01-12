@@ -1,67 +1,112 @@
 "use strict";
 
-let entries = []; 
-let log = [];
+let entry = "";
+let ans = "";
+let log = "";
 let currentEntry = "";
 
-function entry() {
-  entries.push(this.value);
-  currentEntry = entries.join("");
-  document.getElementById("result").innerHTML = currentEntry;
+// Stop calculations that exceed max allowable digits
+function logLength() {
+  if (log.length <= 8 && currentEntry.length <= 8) {
+
+    document.getElementById("result").innerHTML = currentEntry;
+    document.getElementById("log").innerHTML = log;
+
+  } else {
+
+    currentEntry = "";
+    entry = ""
+    log = "";
+
+    document.getElementById("result").innerHTML = "0";
+    document.getElementById("log").innerHTML = "Digit Limit Met";
+  }
+}
+
+// Enter numerical digits
+function entries() {
+  currentEntry += this.value;
+  logLength();
 
   console.log("currentEntry: " + currentEntry);
-  console.log("entries: " + entries);
-  console.log("log: " + log); 
+  console.log("entry: " + entry);
+  console.log("log: " + log);
+
+}
+
+// Only allows one decimal point
+function decimal() {
+  if (currentEntry.indexOf(".") === -1) {
+    entry += this.value;
+    logLength();
+  }
 
 }
 
 // Clears "log" (everything) to zero
 function clearAC() {
-  log = [];
+  log = "";
   currentEntry = "";
-  entries = [];
-  document.getElementById("result").innerHTML = currentEntry;
+  entry = "";
+  logLength();
 
-  console.log("AC " + log);
+  console.log("currentEntry: " + currentEntry);
+  console.log("entry: " + entry);
+  console.log("log: " + log);
+
 }
 
 // Clears "currentEntry" to zero
 function clearCE() {
   currentEntry = "";
-  entries = [];
+  entry = "";
   document.getElementById("result").innerHTML = currentEntry;
+  document.getElementById("log").innerHTML = log;
 
-  console.log("CE " + currentEntry);
+  console.log("currentEntry: " + currentEntry);
+  console.log("entry: " + entry);
+  console.log("log: " + log);
 
 }
 
+// Enter operators
 function calc() {
-  log.push(currentEntry);
-  entries = []; 
-  currentEntry = this.value;
-  document.getElementById("result").innerHTML = currentEntry;
+  log += currentEntry;
+  entry = this.value;
+  log += entry;
+  currentEntry = "";
+  logLength();
 
-  console.log("currentEntry: " + currentEntry); 
+  document.getElementById("result").innerHTML = entry;
+  document.getElementById("log").innerHTML = log;
+
+
+  console.log("currentEntry: " + currentEntry);
+  console.log("entry: " + entry);
   console.log("log: " + log);
 }
 
+// Calculate
 function equals() {
 
-  document.getElementById("result").innerHTML = currentEntry;
+
 }
 
 
 $(document).ready(() => {
 
-  $("#zero, #one, #two, #three, #four, #five, #six, #seven, #eight, #nine, #decimal").on("click", entry);
+  $("#zero, #one, #two, #three, #four, #five, #six, #seven, #eight, #nine").on("click", entries);
+
+  $("#decimal").on("click", decimal);
 
   // Clears "log" (everything) to zero
   $("#AC").on("click", clearAC);
 
   // Clears "currentEntry" to zero
-  $("#CE").on("click", clearCE);  
+  $("#CE").on("click", clearCE);
 
   $("#X, #divide, #minus, #plus").on("click", calc);
 
-});
+  $("#equal").on("click", equals);
 
+});
