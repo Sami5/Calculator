@@ -52,6 +52,9 @@ function clearAC() {
   entry = "";
   logLength();
 
+  document.getElementById("result").innerHTML = "0";
+  document.getElementById("log").innerHTML = "0";
+
   console.log("currentEntry: " + currentEntry);
   console.log("entry: " + entry);
   console.log("log: " + log);
@@ -62,7 +65,7 @@ function clearAC() {
 function clearCE() {
   currentEntry = "";
   entry = "";
-  
+
   document.getElementById("result").innerHTML = "0";
   document.getElementById("log").innerHTML = log;
 
