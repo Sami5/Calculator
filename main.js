@@ -26,6 +26,7 @@ function logLength() {
 // Enter numerical digits
 function entries() {
   currentEntry += this.value;
+  log += this.value;
   logLength();
 
   console.log("currentEntry: " + currentEntry);
@@ -37,7 +38,8 @@ function entries() {
 // Only allows one decimal point
 function decimal() {
   if (currentEntry.indexOf(".") === -1) {
-    entry += this.value;
+    currentEntry += this.value;
+    log += this.value;
     logLength();
   }
 
@@ -71,7 +73,7 @@ function clearCE() {
 
 // Enter operators
 function calc() {
-  log += currentEntry;
+  //log += currentEntry;
   entry = this.value;
   log += entry;
   currentEntry = "";
@@ -86,12 +88,21 @@ function calc() {
   console.log("log: " + log);
 }
 
-// Calculate
+// Calculate "="
 function equals() {
+  ans = eval(log);
+  currentEntry = ans;
 
+  document.getElementById("result").innerHTML = ans;
+  document.getElementById("log").innerHTML = log + "=" + ans;
+
+  console.log("log: " + log);
+  log = ans;
+  console.log("currentEntry: " + currentEntry);
+  console.log("entry: " + entry);
+  console.log("log: " + log);
 
 }
-
 
 $(document).ready(() => {
 
