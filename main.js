@@ -62,7 +62,8 @@ function clearAC() {
 function clearCE() {
   currentEntry = "";
   entry = "";
-  document.getElementById("result").innerHTML = currentEntry;
+  
+  document.getElementById("result").innerHTML = "0";
   document.getElementById("log").innerHTML = log;
 
   console.log("currentEntry: " + currentEntry);
@@ -98,7 +99,7 @@ function equals() {
   console.log("log: " + log);
 
   log = ans;
-  
+
   console.log("currentEntry: " + currentEntry);
   console.log("entry: " + entry);
   console.log("log: " + log);
