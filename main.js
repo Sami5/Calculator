@@ -73,7 +73,6 @@ function clearCE() {
 
 // Enter operators
 function calc() {
-  //log += currentEntry;
   entry = this.value;
   log += entry;
   currentEntry = "";
@@ -97,7 +96,9 @@ function equals() {
   document.getElementById("log").innerHTML = log + "=" + ans;
 
   console.log("log: " + log);
+
   log = ans;
+  
   console.log("currentEntry: " + currentEntry);
   console.log("entry: " + entry);
   console.log("log: " + log);
